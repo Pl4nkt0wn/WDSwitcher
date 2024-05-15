@@ -2,7 +2,7 @@
 Windows Defender Switcher
 
 
-![Preview](https://github.com/Pl4nkt0wn/WDSwitcher/Prog.PNG)
+![Preview](https://github.com/Pl4nkt0wn/WDSwitcher/blob/main/Prog.PNG)
 
 Support: Windows 10 & 11
 
