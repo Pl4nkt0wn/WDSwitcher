@@ -1,4 +1,4 @@
-REM detector architecture script
+:: detector architecture script
 
 :detectArch
 whoami /user | find /i "S-1-5-18" >nul 2>&1
@@ -35,8 +35,7 @@ if %ERRORLEVEL%==0 (
 pause
 
 :pazFail
-echo Make sure the war equipment is ready
-echo Make sure all troops are in 1 folder.
+echo Make sure the files are complete.
 echo If there is a notification, just accept it.
 pause
 exit /b

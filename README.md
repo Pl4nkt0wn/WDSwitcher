@@ -6,12 +6,16 @@ Windows Defender Switcher
 
 Support: Windows 10 & 11
 
+New Feature
+- Auto Switch ON/OFF Network Interface Connection
+- Auto Switch ON Smartscreen Edge Browser
+- Auto Bypass Tamper Protection
+
+=================================
+
 DISABLE
 
 Step:
-- Disable Internet
-- Open Windows Defender
-- Disable Realtime & Tamper Protection
 - Right click main.bat
 - Click Run as Administrator
 - Select menu 1
@@ -22,10 +26,6 @@ Step:
 ENABLE
 
 Step:
-- Disable Internet
 - Right click main.bat
 - Click Run as Administrator
 - Select menu 2
-- Open Windows Defender
-- Enable Realtime & Tamper Protection
-- Turn on the Internet

@@ -1,8 +1,7 @@
-REM disabler script
+:: disabler script
 
 :disableConfirm
 cls
-CALL screen.bat :sizeScreen
 echo The system restarts immediately after Windows Defender is disabled, please make sure again after restarting
 echo SmartScreen and some features have been turned off
 timeout /t 10 /nobreak
@@ -25,6 +24,7 @@ echo]
 echo Detect and close System Security...
 echo]
 echo The process of turning on Windows Defender...
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender\Feature" /v "TamperProtection" /t REG_DWORD /d "4" /f > nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" /v "DisableAntiSpyware" /t REG_DWORD /d "1" /f > nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" /v "DisableRealtimeMonitoring" /t REG_DWORD /d "1" /f > nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" /v "DisableRoutinelyTakingAction" /t REG_DWORD /d "1" /f > nul
@@ -87,6 +87,4 @@ echo Disable System Security
 echo Note: If there are still problems, you can check Windows Defender first, or re-run the script
 shutdown.exe /r /t 30 /c "Turning off Defender - 30 second shutdown process.
 timeout /t 3 /nobreak
-pause
-color 07
-exit
+exit /b

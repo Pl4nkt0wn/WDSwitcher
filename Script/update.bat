@@ -1,4 +1,4 @@
-REM Windows Update Checker Script
+:: Windows Update Checker Script
 
 :update
 echo]

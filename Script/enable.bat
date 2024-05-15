@@ -1,8 +1,7 @@
-REM enabler script
+:: enabler script
 
 :enableConfirm
 cls
-CALL screen.bat :sizeScreen
 echo The process of enabling Windows Defender, wait until it's finished.
 echo Reset Windows Defender after restarting, boss.
 echo Windows Defender policies have been successfully removed, next?
@@ -16,6 +15,10 @@ echo]
 echo Closing system security...
 echo]
 echo Setting Windows Defender...
+SET CurrentDir=%~dp0
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender\Feature" /v "TamperProtection" /t REG_DWORD /d "5" /f > nul
+copy "%CurrentDir%smartscreen.bat" "%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup"
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender\Feature" /f > nul
 reg delete "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" /f > nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" /f > nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Policy Manager" /f > nul
@@ -29,17 +32,17 @@ reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\AppHost" /v "EnableWe
 reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.SecurityAndMaintenance" /v "Enabled" /f > nul
 echo]
 echo Explore Windows Defender processes and services...
-reg add "HKLM\SYSTEM\ControlSet001\Services\SgrmAgent" /v "Start" /t REG_DWORD /d "0" /f
-reg add "HKLM\SYSTEM\ControlSet001\Services\SgrmBroker" /v "Start" /t REG_DWORD /d "2" /f
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\wdboot" /v "Start" /t REG_DWORD /d "0" /f
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\wdfilter" /v "Start" /t REG_DWORD /d "0" /f
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\WinDefend" /v "Start" /t REG_DWORD /d "2" /f
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\SecurityHealthService" /v "Start" /t REG_DWORD /d "3" /f
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\wdnisdrv" /v "Start" /t REG_DWORD /d "3" /f
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\mssecflt" /v "Start" /t REG_DWORD /d "0" /f
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\WdNisSvc" /v "Start" /t REG_DWORD /d "3" /f
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\Sense" /v "Start" /t REG_DWORD /d "3" /f
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\wscsvc" /v "Start" /t REG_DWORD /d "2" /f
+reg add "HKLM\SYSTEM\ControlSet001\Services\SgrmAgent" /v "Start" /t REG_DWORD /d "0" /f > nul
+reg add "HKLM\SYSTEM\ControlSet001\Services\SgrmBroker" /v "Start" /t REG_DWORD /d "2" /f > nul
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\wdboot" /v "Start" /t REG_DWORD /d "0" /f > nul
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\wdfilter" /v "Start" /t REG_DWORD /d "0" /f > nul
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\WinDefend" /v "Start" /t REG_DWORD /d "2" /f > nul
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\SecurityHealthService" /v "Start" /t REG_DWORD /d "3" /f > nul
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\wdnisdrv" /v "Start" /t REG_DWORD /d "3" /f > nul
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\mssecflt" /v "Start" /t REG_DWORD /d "0" /f > nul
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\WdNisSvc" /v "Start" /t REG_DWORD /d "3" /f > nul
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Sense" /v "Start" /t REG_DWORD /d "3" /f > nul
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\wscsvc" /v "Start" /t REG_DWORD /d "2" /f > nul
 echo]
 echo Turning on tasks...
 schtasks /Change /TN "Microsoft\Windows\Windows Defender\Windows Defender Cache Maintenance" /Enable > nul
@@ -64,6 +67,4 @@ echo Windows Defender is on
 echo Note: If there is an error, run the script again!!!
 shutdown.exe /r /t 30 /c "Turn on Windows Defender, wait 30 seconds, boss..
 timeout /t 3 /nobreak
-pause
-color 07
-exit
+exit /b
