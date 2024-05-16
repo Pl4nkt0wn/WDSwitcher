@@ -16,8 +16,8 @@ New Feature:
 DISABLE
 
 Step:
-- Right click main.bat
-- Click Run as Administrator
+- Right click WDSwitcher.ps1
+- Click Run with PowerShell
 - Select menu 1
 - Check Antivirus Status
 ```
@@ -26,7 +26,7 @@ Step:
 ENABLE
 
 Step:
-- Right click main.bat
-- Click Run as Administrator
+- Right click WDSwitcher.ps1
+- Click Run with PowerShell
 - Select menu 2
 ```
