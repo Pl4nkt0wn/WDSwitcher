@@ -2,7 +2,7 @@
 
 @echo off
 chcp 65001 >nul 2>&1
-title Modified by @anonBSOD
+title by @anonBSOD
 color 0c
 
 CALL detect.bat :detectArch
